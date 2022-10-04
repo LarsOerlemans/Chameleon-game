@@ -9,6 +9,8 @@ public class Grapple : MonoBehaviour
     public float stopDistance = 4f;
     public GameObject tonguePrefab;
     public Transform shootTransform;
+    public AudioSource whip_start;
+    public AudioSource whip_end;
 
     public Tongue tongue;
     public bool pulling;
@@ -30,6 +32,7 @@ public class Grapple : MonoBehaviour
             pulling = false;
             tongue = Instantiate(tonguePrefab, shootTransform.position, Quaternion.identity).GetComponent<Tongue>();
             tongue.Initialize(this, shootTransform);
+            whip_start.Play();
             host.animationState(false);
             host.moveState(false);
             host.GetComponent<Animator>().Play("tongue");
@@ -50,6 +53,7 @@ public class Grapple : MonoBehaviour
 
     public void StartPull(){
         pulling = true;
+        whip_end.Play();
     }
 
     private void DestroyTongue(){
