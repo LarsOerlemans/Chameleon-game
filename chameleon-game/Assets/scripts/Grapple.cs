@@ -13,6 +13,7 @@ public class Grapple : MonoBehaviour
     public Tongue tongue;
     public bool pulling;
     public Rigidbody rigid;
+    public Chameleon host;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,17 @@ public class Grapple : MonoBehaviour
             pulling = false;
             tongue = Instantiate(tonguePrefab, shootTransform.position, Quaternion.identity).GetComponent<Tongue>();
             tongue.Initialize(this, shootTransform);
+            host.animationState(false);
+            host.moveState(false);
+            host.GetComponent<Animator>().Play("tongue");
             StartCoroutine(DestroyTongueAfterLifeTime());
         }
 
         if(!pulling || tongue ==null) return;
 
         if(Vector3.Distance(transform.position, tongue.transform.position) <= stopDistance){
+            host.animationState(true);
+            host.moveState(true);
             DestroyTongue();
         } else {
             rigid.AddForce((tongue.transform.position - transform.position).normalized * pullSpeed, ForceMode.VelocityChange);
@@ -48,7 +54,7 @@ public class Grapple : MonoBehaviour
 
     private void DestroyTongue(){
         if(tongue == null) return;
-
+        
         pulling = false;
         Destroy(tongue.gameObject);
         tongue = null;
@@ -56,6 +62,8 @@ public class Grapple : MonoBehaviour
 
     private IEnumerator DestroyTongueAfterLifeTime(){
         yield return new WaitForSeconds(2f);
+        host.animationState(true);
+        host.moveState(true);
         DestroyTongue();
     }
 
