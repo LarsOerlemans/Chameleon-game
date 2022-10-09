@@ -17,13 +17,23 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown( KeyCode.Space))
         {
-            DamagePlayer(10);
+            TakeDamage(10);
         }
     }
 
-    public void DamagePlayer (int damage)
+    public void TakeDamage (int damage)
     {
         curHealth -= damage;
-        
+        // Play hurt animation
+
+        if (curHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        //Die Animation
+        Debug.Log("Dead");
     }
 }

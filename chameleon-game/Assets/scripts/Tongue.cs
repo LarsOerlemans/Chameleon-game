@@ -11,11 +11,13 @@ public class Tongue : MonoBehaviour
     public Rigidbody rigid;
     public LineRenderer lineRenderer;
     private Transform start;
+    private Transform Attack;
 
     // Start is called before the first frame update
-    public void Initialize(Grapple grapple, Transform shootTransform)
+    public void Initialize(Grapple grapple, Transform shootTransform, Transform AttackPoint)
     {
         start = shootTransform;
+        Attack = AttackPoint;
         transform.forward = shootTransform.forward;
         this.grapple = grapple;
         rigid = GetComponent<Rigidbody>();
@@ -31,6 +33,7 @@ public class Tongue : MonoBehaviour
                 start.position
             };
         lineRenderer.SetPositions(positions);
+        Attack.position = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)

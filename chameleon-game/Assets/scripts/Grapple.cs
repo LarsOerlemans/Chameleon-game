@@ -17,6 +17,12 @@ public class Grapple : MonoBehaviour
     public Rigidbody rigid;
     public Chameleon host;
 
+
+    public Transform AttackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +37,7 @@ public class Grapple : MonoBehaviour
             StopAllCoroutines();
             pulling = false;
             tongue = Instantiate(tonguePrefab, shootTransform.position, Quaternion.identity).GetComponent<Tongue>();
-            tongue.Initialize(this, shootTransform);
+            tongue.Initialize(this, shootTransform, AttackPoint);
             whip_start.Play();
             host.animationState(false);
             host.moveState(false);
@@ -53,6 +59,7 @@ public class Grapple : MonoBehaviour
 
     public void StartPull(){
         pulling = true;
+        Attack();
         whip_end.Play();
     }
 
@@ -71,4 +78,15 @@ public class Grapple : MonoBehaviour
         DestroyTongue();
     }
 
+ void Attack()
+    {
+        // Play Attack Animation
+        Collider[] hitEnemies = Physics.OverlapSphere(AttackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+        }
+
+    }
 }
