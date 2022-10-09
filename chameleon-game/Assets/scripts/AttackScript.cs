@@ -6,6 +6,7 @@ public class AttackScript : MonoBehaviour
 {
 
     public Transform AttackPoint;
+    public AudioSource tail_sound;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public string tail = "g";
@@ -29,6 +30,7 @@ public class AttackScript : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            tail_sound.Play();
         }
 
     }
