@@ -307,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192448132}
   m_LocalRotation: {x: -0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 149.99995, z: -300.00003}
+  m_LocalPosition: {x: 0, y: 150, z: -364}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,12 +338,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: {fileID: 2044016614}
   tail_sound: {fileID: 1541850783}
-  attackRange: 1.58
+  attackRange: 1.19
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   tail: h
-  attackDamage: 40
+  attackDamage: 50
 --- !u!65 &336994183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -357,6 +357,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 6}
   m_Center: {x: 0, y: 1, z: 1.5}
+--- !u!114 &336994188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336994172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47bcd91ccfa11d40bda0c2510c8b242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHealth: 0
+  maxHealth: 100
 --- !u!1001 &614953621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -590,7 +604,15 @@ PrefabInstance:
       objectReference: {fileID: 1435652548}
     - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: attackRange
-      value: 2.07
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: attackDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 1280
       objectReference: {fileID: 0}
     - target: {fileID: 6644639013356247449, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: m_Layer
@@ -998,12 +1020,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackPoint: {fileID: 192448133}
   tail_sound: {fileID: 1541850783}
-  attackRange: 3.96
+  attackRange: 1.19
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   tail: g
-  attackDamage: 40
+  attackDamage: 50
 --- !u!65 &1422969754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1333,7 +1355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044016613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 1.6, z: -2.64}
+  m_LocalPosition: {x: -0.03, y: 1.6, z: -3.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1549,11 +1571,15 @@ PrefabInstance:
       objectReference: {fileID: 52711498}
     - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: attackRange
-      value: 2.37
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: attackDamage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: enemyLayers.m_Bits
-      value: 256
+      value: 1280
       objectReference: {fileID: 0}
     - target: {fileID: 6644639013356247449, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: m_Layer
