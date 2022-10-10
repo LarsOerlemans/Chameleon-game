@@ -9,6 +9,7 @@ public class Grapple : MonoBehaviour
     public float stopDistance = 4f;
     public GameObject tonguePrefab;
     public Transform shootTransform;
+    public string input = "v";
     public AudioSource whip_start;
     public AudioSource whip_end;
 
@@ -33,7 +34,7 @@ public class Grapple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(tongue == null && Input.GetMouseButtonDown(0)){
+        if(tongue == null && Input.GetKeyDown(input)){
             StopAllCoroutines();
             pulling = false;
             tongue = Instantiate(tonguePrefab, shootTransform.position, Quaternion.identity).GetComponent<Tongue>();
@@ -48,8 +49,6 @@ public class Grapple : MonoBehaviour
         if(!pulling || tongue ==null) return;
 
         if(Vector3.Distance(transform.position, tongue.transform.position) <= stopDistance){
-            host.animationState(true);
-            host.moveState(true);
             DestroyTongue();
         } else {
             rigid.AddForce((tongue.transform.position - transform.position).normalized * pullSpeed, ForceMode.VelocityChange);
@@ -64,17 +63,16 @@ public class Grapple : MonoBehaviour
     }
 
     private void DestroyTongue(){
+        host.animationState(true);
+        host.moveState(true);
         if(tongue == null) return;
-        
         pulling = false;
         Destroy(tongue.gameObject);
         tongue = null;
     }
 
     private IEnumerator DestroyTongueAfterLifeTime(){
-        yield return new WaitForSeconds(2f);
-        host.animationState(true);
-        host.moveState(true);
+        yield return new WaitForSeconds(0.6f);
         DestroyTongue();
     }
 
@@ -86,6 +84,7 @@ public class Grapple : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            print(enemy.GetComponent<Health>());
         }
 
     }

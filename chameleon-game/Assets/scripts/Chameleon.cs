@@ -74,8 +74,7 @@ public class Chameleon : MonoBehaviour
 
                 //actual line that does the moving
                 rigid.AddForce(direction * speed * 10f, ForceMode.Force);
-
-            } else if (velocity == Vector3.zero){
+            } else {
                 //idle animation if not moving
                 if(animation == true){
                     chameleon.GetComponent<Animator>().Play("idle");

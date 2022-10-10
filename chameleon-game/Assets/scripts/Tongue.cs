@@ -38,7 +38,7 @@ public class Tongue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if((LayerMask.GetMask("Grapple") & 1 << other.gameObject.layer) > 0){
+        if(((LayerMask.GetMask("Grapple") & 1 << other.gameObject.layer) > 0)  || (LayerMask.GetMask("Enemy") & 1 << other.gameObject.layer) > 0 ){
             rigid.useGravity = false;
             rigid.isKinematic = true;
 
