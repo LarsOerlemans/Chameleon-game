@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -357,8 +357,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 6}
-  m_Center: {x: 0, y: 1, z: 1.5}
+  m_Size: {x: 2, y: 2.5, z: 6}
+  m_Center: {x: 0, y: 2, z: 1.5}
 --- !u!114 &336994188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +678,14 @@ PrefabInstance:
       propertyPath: enemyLayers.m_Bits
       value: 1280
       objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982073, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982073, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6644639013356247449, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -907,8 +915,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 75, y: 250, z: -75}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 60, y: 60, z: -75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -917,7 +925,7 @@ Transform:
   - {fileID: 1541850784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1095056804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1235,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 6}
-  m_Center: {x: 0, y: 1, z: 1.5}
+  m_Size: {x: 2, y: 2.5, z: 6}
+  m_Center: {x: 0, y: 2, z: 1.5}
 --- !u!114 &1422969755 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6644639012952982055, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
@@ -1781,6 +1789,14 @@ PrefabInstance:
     - target: {fileID: 6644639012952982072, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: enemyLayers.m_Bits
       value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982073, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644639012952982073, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6644639013356247449, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
       propertyPath: m_Layer
