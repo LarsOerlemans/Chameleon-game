@@ -344,6 +344,8 @@ MonoBehaviour:
     m_Bits: 1280
   tail: h
   attackDamage: 50
+  chameleon: {fileID: 336994172}
+  host: {fileID: 0}
 --- !u!65 &336994183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1026,6 +1028,8 @@ MonoBehaviour:
     m_Bits: 1280
   tail: g
   attackDamage: 50
+  chameleon: {fileID: 1422969746}
+  host: {fileID: 1422969755}
 --- !u!65 &1422969754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1039,6 +1043,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 6}
   m_Center: {x: 0, y: 1, z: 1.5}
+--- !u!114 &1422969755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6644639012952982055, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+  m_PrefabInstance: {fileID: 6644639012765080375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422969746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71e03423d25d5444a86bcd1adae5f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1435652547
 GameObject:
   m_ObjectHideFlags: 0
