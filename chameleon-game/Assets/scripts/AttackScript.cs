@@ -11,13 +11,19 @@ public class AttackScript : MonoBehaviour
     public LayerMask enemyLayers;
     public string tail = "g";
     public int attackDamage = 40;
+    public GameObject chameleon;
+    public Chameleon host;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(tail))
         {
+            chameleon.GetComponent<Animator>().Play("tailswipe");
+            host.animationState(false);
+            host.moveState(false);
             Attack();
+            StartCoroutine(EndTailswipe());
         }
        
     }
@@ -42,6 +48,12 @@ public class AttackScript : MonoBehaviour
         }
         
         Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
+    }
+
+    private IEnumerator EndTailswipe(){
+        yield return new WaitForSeconds(0.7f);
+        host.animationState(true);
+        host.moveState(true);
     }
 
 }
