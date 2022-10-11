@@ -5,10 +5,6 @@ using UnityEngine;
 public class Chameleon : MonoBehaviour
 {
     //variables to be set
-    public string up = "w";
-    public string down = "s";
-    public string left = "d";
-    public string right = "a";
     public float speed = 10;
     public float grounddrag = 9;
     public float turnSmoothTime = 0.1f;
@@ -20,8 +16,6 @@ public class Chameleon : MonoBehaviour
     public GameObject chameleon;
     public Rigidbody rigid;
     private Vector3 velocity;
-    float x = 0;
-    float y = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,24 +32,8 @@ public class Chameleon : MonoBehaviour
         rigid.drag = grounddrag;
 
         //get movement input and direction
-        if(Input.GetKeyDown(up)){
-            y = 1;
-           }
-        if(Input.GetKeyDown(down)){
-            y = -1;
-        }
-        if(Input.GetKeyDown(left)){
-            x = 1;
-        }
-        if(Input.GetKeyDown(right)){
-            x = -1;
-        }
-        if((Input.GetKeyUp(up) && !Input.GetKeyDown(down))|| (!Input.GetKeyDown(up) && Input.GetKeyUp(down))){
-            y = 0;
-        }
-        if((Input.GetKeyUp(right) && !Input.GetKeyDown(left)) || (!Input.GetKeyDown(right) && Input.GetKeyUp(left))){
-            x = 0;
-        }
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(x, 0, y).normalized;
 
         //movement + animation
@@ -74,7 +52,8 @@ public class Chameleon : MonoBehaviour
 
                 //actual line that does the moving
                 rigid.AddForce(direction * speed * 10f, ForceMode.Force);
-            } else {
+
+            } else if (velocity == Vector3.zero){
                 //idle animation if not moving
                 if(animation == true){
                     chameleon.GetComponent<Animator>().Play("idle");
