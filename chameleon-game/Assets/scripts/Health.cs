@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public int curHealth = 0;
     public int maxHealth = 100;
+    public Chameleon host;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,9 @@ public class Health : MonoBehaviour
     void Die()
     {
         //Die Animation
+        host.GetComponent<Animator>().Play("death");
+        host.animationState(false);
+        host.moveState(false);
         Debug.Log("Dead");
     }
 }

@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172198738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 14.9}
+  m_LocalPosition: {x: 34, y: 16.1, z: 14.9}
   m_LocalScale: {x: 19.552402, y: 21.447342, z: 1.8655}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   maxHealth: 100
+  host: {fileID: 0}
 --- !u!1 &192448132
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +374,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   maxHealth: 100
+  host: {fileID: 336994189}
+--- !u!114 &336994189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6644639012952982055, guid: b6bfe6d710a3b674e980986f562d1b06, type: 3}
+  m_PrefabInstance: {fileID: 614953621}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336994172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71e03423d25d5444a86bcd1adae5f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &427415779
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1202,6 +1215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   maxHealth: 100
+  host: {fileID: 1422969755}
 --- !u!114 &1422969748
 MonoBehaviour:
   m_ObjectHideFlags: 0
