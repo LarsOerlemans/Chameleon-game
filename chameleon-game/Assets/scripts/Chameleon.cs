@@ -87,7 +87,7 @@ public class Chameleon : MonoBehaviour
     //keeps track of velocity
     void OnCollisionEnter(Collision collision)
     {
-        velocity = collision.relativeVelocity;
+        //velocity = collision.relativeVelocity;
     }
 
     public void animationState(bool state){

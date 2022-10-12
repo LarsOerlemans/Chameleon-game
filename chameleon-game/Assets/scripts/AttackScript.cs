@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackScript : MonoBehaviour
 {
@@ -13,17 +14,34 @@ public class AttackScript : MonoBehaviour
     public int attackDamage = 40;
     public GameObject chameleon;
     public Chameleon host;
+    public float attackRate = 1.4f;
+    float nextAttackTime = 0f;
+    public float strength = 50f;
+    private Rigidbody rigid;
+    public GameObject chameleon2;
+
+    void Start()
+    {
+        //setup rigidbody
+        rigid = chameleon2.GetComponent<Rigidbody>();
+        rigid.freezeRotation = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(tail))
+        if(Time.time >= nextAttackTime)
         {
-            chameleon.GetComponent<Animator>().Play("tailswipe");
-            host.animationState(false);
-            host.moveState(false);
-            Attack();
-            StartCoroutine(EndTailswipe());
+            if (Input.GetKeyDown(tail))
+            {
+                chameleon.GetComponent<Animator>().Play("tailswipe");
+                host.animationState(false);
+                host.moveState(false);
+                tail_sound.Play();
+                Attack();
+                StartCoroutine(EndTailswipe());
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
        
     }
@@ -36,7 +54,8 @@ public class AttackScript : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             enemy.GetComponent<Health>().TakeDamage(attackDamage);
-            tail_sound.Play();
+            PlayKnockback(chameleon2);
+            
         }
 
     }
@@ -55,5 +74,12 @@ public class AttackScript : MonoBehaviour
         host.animationState(true);
         host.moveState(true);
     }
+
+    public void PlayKnockback(GameObject sender)
+    {
+        Vector3 direction = (transform.position - sender.transform.position).normalized;
+        rigid.AddForce(-direction*strength, ForceMode.Impulse);
+    }
+
 
 }
