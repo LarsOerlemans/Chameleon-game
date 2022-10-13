@@ -9,7 +9,7 @@ public class Chameleon : MonoBehaviour
     public string down = "s";
     public string left = "d";
     public string right = "a";
-    public float speed = 10;
+    public float speed = 20;
     public float grounddrag = 9;
     public float turnSmoothTime = 0.1f;
     public bool animation = true;
@@ -19,7 +19,6 @@ public class Chameleon : MonoBehaviour
     float turnSmoothVelocity;
     public GameObject chameleon;
     public Rigidbody rigid;
-    private Vector3 velocity;
     float x = 0;
     float y = 0;
 
@@ -36,6 +35,9 @@ public class Chameleon : MonoBehaviour
     {
         //set drag
         rigid.drag = grounddrag;
+        if(rigid.position.y != 0){
+          chameleon.transform.position = new Vector3(rigid.position.x, 0, rigid.position.z);
+        }
 
         //get movement input and direction
         if(Input.GetKeyDown(up)){
@@ -61,7 +63,7 @@ public class Chameleon : MonoBehaviour
         //movement + animation
         if(move == true){
             if (direction.magnitude >= 0.1f){
-                //get angle
+                //get angle for pointing the chameleon in the right direction
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -84,16 +86,12 @@ public class Chameleon : MonoBehaviour
         
     }
 
-    //keeps track of velocity
-    void OnCollisionEnter(Collision collision)
-    {
-        //velocity = collision.relativeVelocity;
-    }
-
+    //function for making sure we can or can not change animations
     public void animationState(bool state){
         animation = state;
     }
 
+    //function for making sure we can or cannot move
     public void moveState(bool state){
         move = state;
     }
@@ -101,10 +99,13 @@ public class Chameleon : MonoBehaviour
     //make sure we dont exeed the maximum speed
     private void SpeedControl()
     {
+        //new vector with currecnt velocity
         Vector3 flatVel = new Vector3(rigid.velocity.x, 0f, rigid.velocity.z);
 
+        //check if we exceed speed limit
         if(flatVel.magnitude > speed)
-        {
+        {   
+            //if we do change velocity to speed limit
             Vector3 limitedVel = flatVel.normalized * speed;
             rigid.velocity = new Vector3(limitedVel.x, rigid.velocity.y, limitedVel.z);
         }
