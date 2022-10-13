@@ -71,8 +71,9 @@ public class AttackScript : MonoBehaviour
         Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
     }
 
+    //timer
     private IEnumerator EndTailswipe(){
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         host.animationState(true);
         host.moveState(true);
     }
