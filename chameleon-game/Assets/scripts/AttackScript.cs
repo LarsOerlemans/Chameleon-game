@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class AttackScript : MonoBehaviour
 {
 
@@ -53,8 +54,9 @@ public class AttackScript : MonoBehaviour
 
         foreach(Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<Health>().TakeDamage(attackDamage);
             PlayKnockback(chameleon2);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            
             
         }
 
