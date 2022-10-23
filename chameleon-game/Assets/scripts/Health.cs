@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class Health : MonoBehaviour
     public Chameleon host;
     public string winner;
     float nextAttackTime = 10f;
+    public GameObject player;
+
+    public Slider healthBar;
     // Start is called before the first frame update
     void Start()
     {
         curHealth = maxHealth;
+        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        healthBar.maxValue = maxHealth;
+        healthBar.value = maxHealth;
     }
 
     // Update is called once per frame
@@ -29,6 +36,7 @@ public class Health : MonoBehaviour
     public void TakeDamage (int damage)
     {
         curHealth -= damage;
+        healthBar.value = curHealth;
         // Play hurt animation
 
         if (curHealth <= 0)
@@ -49,6 +57,7 @@ public class Health : MonoBehaviour
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
+        Name.name = player.name; 
         SceneManager.LoadScene(winner);
     }
 }
