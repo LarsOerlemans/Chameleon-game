@@ -13,6 +13,11 @@ public class Health : MonoBehaviour
     public string winner;
     float nextAttackTime = 10f;
     public GameObject player;
+    public float startingPitch = 1.1f;
+    public float half = 1.5f;
+    public float danger = 1.9f;
+
+    public AudioSource audioSource;
 
     public Slider healthBar;
     // Start is called before the first frame update
@@ -22,6 +27,8 @@ public class Health : MonoBehaviour
         healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
+        audioSource = GameObject.Find("SoundTrack").GetComponent<AudioSource>();
+        audioSource.pitch = startingPitch;
     }
 
     // Update is called once per frame
@@ -38,6 +45,17 @@ public class Health : MonoBehaviour
         curHealth -= damage;
         healthBar.value = curHealth;
         // Play hurt animation
+
+        if (curHealth <= 50)
+        {
+            audioSource.pitch = half;
+
+        }
+        if (curHealth <= 20)
+        {
+            audioSource.pitch = danger;
+
+        }
 
         if (curHealth <= 0)
         {
