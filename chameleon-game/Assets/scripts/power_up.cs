@@ -6,6 +6,10 @@ public class power_up : MonoBehaviour
 {
     public int power;
     private Chameleon chameleon;
+
+    public AudioSource heal_sfx;
+    public AudioSource powerup_sfx;
+    public AudioSource powerdown_sfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,27 +43,32 @@ public class power_up : MonoBehaviour
             chameleon = other.gameObject.GetComponent<Chameleon>();
             if (power == 1){
                 //speed boost
+                powerup_sfx.Play();
                 chameleon.speedBoost(true);
                 Destroy(gameObject);
             }
             if (power == 2){
                 //damage boost
+                powerup_sfx.Play();
                 other.gameObject.GetComponent<Grapple>().DamageMultiplier(1.3f);
                 other.gameObject.GetComponent<AttackScript>().DamageMultiplier(1.3f);
                 Destroy(gameObject);
             }
             if (power == 3){
                 //health boost / healing
+                heal_sfx.Play();
                 other.gameObject.GetComponent<Health>().Heal(20f);
                 Destroy(gameObject);
             }
             if (power == 4){
                 //speed decrease
+                powerdown_sfx.Play();
                 chameleon.speedDecrease(true);
                 Destroy(gameObject);
             }
             if (power == 5){
                 //damage decrease
+                powerdown_sfx.Play();
                 other.gameObject.GetComponent<Grapple>().DamageMultiplier(0.7f);
                 other.gameObject.GetComponent<AttackScript>().DamageMultiplier(0.7f);
                 Destroy(gameObject);
