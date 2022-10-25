@@ -22,7 +22,8 @@ public class Grapple : MonoBehaviour
     public Transform AttackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public int attackDamage = 40;
+    public float attackDamage = 40f;
+    public float m = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -76,16 +77,28 @@ public class Grapple : MonoBehaviour
         DestroyTongue();
     }
 
- void Attack()
+    void Attack()
     {
         // Play Attack Animation
         Collider[] hitEnemies = Physics.OverlapSphere(AttackPoint.position, attackRange, enemyLayers);
 
         foreach(Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage * m);
             print(enemy.GetComponent<Health>());
         }
 
     }
+
+    public void DamageMultiplier(float f){
+        m = f;
+        StartCoroutine(Timerpowerup());
+        Debug.Log(m);
+    }
+
+    private IEnumerator Timerpowerup(){
+        yield return new WaitForSeconds(2.0f);
+        DamageMultiplier(1.0f);
+    }
+
 }

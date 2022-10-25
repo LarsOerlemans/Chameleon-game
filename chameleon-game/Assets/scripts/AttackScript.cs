@@ -12,7 +12,8 @@ public class AttackScript : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public string tail = "g";
-    public int attackDamage = 40;
+    public float attackDamage = 40f;
+    public float m = 1f;
     public GameObject chameleon;
     public Chameleon host;
     public float attackRate = 1.4f;
@@ -55,7 +56,7 @@ public class AttackScript : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             PlayKnockback(chameleon2);
-            enemy.GetComponent<Health>().TakeDamage(attackDamage);
+            enemy.GetComponent<Health>().TakeDamage(attackDamage * m);
             
             
         }
@@ -84,5 +85,15 @@ public class AttackScript : MonoBehaviour
         rigid.AddForce(-direction*strength, ForceMode.Impulse);
     }
 
+    public void DamageMultiplier(float f){
+        m = f;
+        StartCoroutine(Timerpowerup());
+        Debug.Log(m);
+    }
+
+    private IEnumerator Timerpowerup(){
+        yield return new WaitForSeconds(2.0f);
+        DamageMultiplier(1.0f);
+    }
 
 }

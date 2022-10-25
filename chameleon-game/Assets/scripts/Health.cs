@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int curHealth = 0;
-    public int maxHealth = 100;
+    public float curHealth = 0f;
+    public float maxHealth = 100f;
     public Chameleon host;
     public string winner;
     float nextAttackTime = 10f;
@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage (int damage)
+    public void TakeDamage (float damage)
     {
         curHealth -= damage;
         healthBar.value = curHealth;
@@ -63,6 +63,24 @@ public class Health : MonoBehaviour
             StartCoroutine(ExecuteAfterTime(2));
         }
     }
+
+    public void Heal(float value){
+        curHealth += value;
+        healthBar.value = curHealth;
+
+        if (curHealth <= 50)
+        {
+            audioSource.pitch = half;
+
+        }
+        if (curHealth <= 20)
+        {
+            audioSource.pitch = danger;
+
+        }
+
+    }
+
     void Die()
     {
         //Die Animation

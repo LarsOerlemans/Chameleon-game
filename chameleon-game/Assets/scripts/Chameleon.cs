@@ -72,10 +72,11 @@ public class Chameleon : MonoBehaviour
                 if(animation == true){
                     chameleon.GetComponent<Animator>().Play("walking");
                 }
-                SpeedControl();
+                //SpeedControl();
 
                 //actual line that does the moving
                 rigid.AddForce(direction * speed * 10f, ForceMode.Force);
+                SpeedControl();
             } else {
                 //idle animation if not moving
                 if(animation == true){
@@ -110,4 +111,38 @@ public class Chameleon : MonoBehaviour
             rigid.velocity = new Vector3(limitedVel.x, rigid.velocity.y, limitedVel.z);
         }
     }
+
+    public void speedBoost(bool trigger){
+        if (trigger == true){
+            speed  = 20;
+            StartCoroutine(Timerpowerup(1));
+        } else if (trigger == false){
+            speed = 10;
+        }
+    }
+
+    public void speedDecrease(bool trigger){
+        if (trigger == true){
+            speed = 5;
+            StartCoroutine(Timerpowerup(4));
+        } else if (trigger == false){
+            speed = 10;
+        }
+    }
+
+    private IEnumerator Timerpowerup(int i){
+        yield return new WaitForSeconds(2.0f);
+        if (i == 1){
+            speedBoost(false);
+        } else if (i == 2){
+
+        } else if (i == 3){
+
+        } else if (i == 4){
+            speedDecrease(false);
+        } else if (i == 5){
+
+        }
+    }
+
 }
