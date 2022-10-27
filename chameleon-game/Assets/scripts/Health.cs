@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public float curHealth = 0f;
-    public float maxHealth = 100f;
+    public float maxHealth = 200f;
     public Chameleon host;
     public string winner;
     float nextAttackTime = 10f;
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
     public void TakeDamage (float damage)
     {
         curHealth -= damage;
-        healthBar.value = curHealth;
+        healthBar.value = curHealth/2;
         // Play hurt animation
 
         if (curHealth <= 50)
