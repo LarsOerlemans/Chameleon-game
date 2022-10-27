@@ -2919,6 +2919,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 465753770160234441, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 465753770160234454, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
+      propertyPath: input
+      value: c
+      objectReference: {fileID: 0}
     - target: {fileID: 465753770160234454, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
       propertyPath: whip_end
       value: 
@@ -2927,6 +2935,10 @@ PrefabInstance:
       propertyPath: whip_start
       value: 
       objectReference: {fileID: 1873471203}
+    - target: {fileID: 465753770990538053, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
+      propertyPath: dashForce
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 465753770990538058, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
       propertyPath: danger
       value: 1.9
@@ -2940,9 +2952,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2028248444}
     - target: {fileID: 465753770990538058, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 465753770990538058, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 20203685}
+    - target: {fileID: 465753770990538061, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
+      propertyPath: tail
+      value: v
+      objectReference: {fileID: 0}
     - target: {fileID: 465753770990538061, guid: d852f80663254f34f974b0dbc2cc98d8, type: 3}
       propertyPath: strength
       value: 200
@@ -2992,6 +3012,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 20203685}
+    - target: {fileID: 906628976025794293, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 906628976025794294, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
+      propertyPath: key
+      value: .
+      objectReference: {fileID: 0}
+    - target: {fileID: 906628976025794294, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
+      propertyPath: dashForce
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 906628976025794297, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3037,6 +3069,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 906628976025794298, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
+      propertyPath: tail
+      value: ','
+      objectReference: {fileID: 0}
+    - target: {fileID: 906628976025794298, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
       propertyPath: chameleon2
       value: 
       objectReference: {fileID: 919132148414522222}
@@ -3044,6 +3080,10 @@ PrefabInstance:
       propertyPath: tail_sound
       value: 
       objectReference: {fileID: 1541850783}
+    - target: {fileID: 2730488022330510278, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
+      propertyPath: input
+      value: m
+      objectReference: {fileID: 0}
     - target: {fileID: 2730488022330510278, guid: 4cd7fadabfe5c534a9b6164a048a5d33, type: 3}
       propertyPath: whip_end
       value: 

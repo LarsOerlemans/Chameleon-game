@@ -114,19 +114,19 @@ public class Chameleon : MonoBehaviour
 
     public void speedBoost(bool trigger){
         if (trigger == true){
-            speed  = 20;
+            speed  = 40;
             StartCoroutine(Timerpowerup(1));
         } else if (trigger == false){
-            speed = 10;
+            speed = 20;
         }
     }
 
     public void speedDecrease(bool trigger){
         if (trigger == true){
-            speed = 5;
+            speed = 10;
             StartCoroutine(Timerpowerup(4));
         } else if (trigger == false){
-            speed = 10;
+            speed = 20;
         }
     }
 
@@ -134,15 +134,8 @@ public class Chameleon : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         if (i == 1){
             speedBoost(false);
-        } else if (i == 2){
-
-        } else if (i == 3){
-
         } else if (i == 4){
             speedDecrease(false);
-        } else if (i == 5){
-
-        }
+        } 
     }
-
 }
