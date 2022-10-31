@@ -84,6 +84,10 @@ public class Grapple : MonoBehaviour
 
         foreach(Collider enemy in hitEnemies)
         {
+            if(enemy.GetComponent<Health>() == null)
+            {
+                return;
+            }
             enemy.GetComponent<Health>().TakeDamage(attackDamage * m);
             print(enemy.GetComponent<Health>());
         }

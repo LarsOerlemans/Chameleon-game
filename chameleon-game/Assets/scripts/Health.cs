@@ -24,7 +24,13 @@ public class Health : MonoBehaviour
     void Start()
     {
         curHealth = maxHealth;
-        healthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
+        if (string.Compare(player.name,"Chameleon (1)") == 0)
+        {
+            healthBar = GameObject.Find("HealthBar1").GetComponent<Slider>();
+            print("hello");
+        } else {
+        healthBar = GameObject.Find("HealthBar2").GetComponent<Slider>();
+        }
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
         audioSource = GameObject.Find("SoundTrack").GetComponent<AudioSource>();
@@ -43,7 +49,7 @@ public class Health : MonoBehaviour
     public void TakeDamage (float damage)
     {
         curHealth -= damage;
-        healthBar.value = curHealth/2;
+        healthBar.value = curHealth;
         // Play hurt animation
 
         if (curHealth <= 50)
@@ -68,12 +74,12 @@ public class Health : MonoBehaviour
         curHealth += value;
         healthBar.value = curHealth;
 
-        if (curHealth <= 50)
+        if (curHealth <= 100)
         {
             audioSource.pitch = half;
 
         }
-        if (curHealth <= 20)
+        if (curHealth <= 50)
         {
             audioSource.pitch = danger;
 
