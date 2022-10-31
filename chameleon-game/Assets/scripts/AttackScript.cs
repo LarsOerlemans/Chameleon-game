@@ -55,11 +55,12 @@ public class AttackScript : MonoBehaviour
 
         foreach(Collider enemy in hitEnemies)
         {
-            PlayKnockback(chameleon2);
             if(enemy.GetComponent<Health>() == null)
             {
-                return;
+                continue;
             }
+            PlayKnockback(chameleon2);
+
             enemy.GetComponent<Health>().TakeDamage(attackDamage * m);
             
             

@@ -86,7 +86,7 @@ public class Grapple : MonoBehaviour
         {
             if(enemy.GetComponent<Health>() == null)
             {
-                return;
+                continue;
             }
             enemy.GetComponent<Health>().TakeDamage(attackDamage * m);
             print(enemy.GetComponent<Health>());
